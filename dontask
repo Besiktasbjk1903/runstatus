@@ -1,0 +1,22 @@
+import discord
+from discord.ext import commands
+
+# Vervang 'YOUR_BOT_TOKEN' door je eigen bot token
+TOKEN = 'MTI3OTEzODUzNjY1MzcyMTY0MQ.GVo8S2.2d_LoU6gTH5ggGYtVO87xTmt9KYFjViAyFm3wo'
+
+# Initializeer de bot
+intents = discord.Intents.default()
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    # Dit wordt uitgevoerd zodra de bot succesvol is verbonden
+    print(f'{bot.user.name} has connected to Discord!')
+    
+    # Verander de status van de bot
+    activity = discord.Activity(type=discord.ActivityType.watching, name="the Ultras Sofia server")
+    await bot.change_presence(activity=activity)
+    print(f'Status changed to Watching the Ultras Sofia server')
+
+# Start de bot
+bot.run(TOKEN)
